@@ -178,7 +178,7 @@ const showTableResult = (mat, colHeaders, rowHeaders) => {
 const createMinEle = ele => {
     const para = document.createElement("p");
     para.className = `is-size-4`;
-    const text = document.createTextNode(`${ele} is the minimum value`);
+    const text = document.createTextNode(`Minimum Value -> ${ele}`);
     para.appendChild(text);
     res.append(para);
 }
