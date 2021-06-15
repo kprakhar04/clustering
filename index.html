@@ -1,0 +1,71 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+        }
+
+        h4 {
+            color: #3B6978 !important;
+        }
+
+        p {
+            background-color: #204051;
+            color: #fff;
+            padding: 5px 10px !important;
+        }
+
+
+
+        button {
+            background-color: #204051 !important;
+            color: #fff !important;
+        }
+
+        .round-button {
+            border-radius: 50%;
+            display: inline-block;
+            background: white !important;
+            border: solid 4px #3B6978 !important;
+            margin: auto;
+        }
+
+        hr {
+            background-color: #2f2f2f !important;
+            height: 0.4px !important;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" />
+    <link rel="icon" href="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200X200.png" type="image/x-icon">
+    <title>Agglomerative Clustering</title>
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <h4 class="title">
+                Agglomerative Clustering
+            </h4>
+
+            <div class="field">
+                <div class="control">
+                    <textarea class="textarea is-medium" placeholder="X1 points" rows="10" id="x1"></textarea>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <textarea class="textarea is-medium" placeholder="X2 points" rows="10" id="x2"></textarea>
+                </div>
+            </div>
+            <button class="button is-link" id="mainBtn">Submit</button>
+        </div>
+        <hr>
+        <div class="content" id="res">
+
+        </div>
+    </section>
+    <script src="index.js"></script>
+</body>
+
+</html>
