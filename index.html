@@ -35,9 +35,22 @@
             background-color: #2f2f2f !important;
             height: 0.4px !important;
         }
+
+
+        .switches {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+        }
+
+        .switch[type=checkbox].is-info:checked+label::before,
+        .switch[type=checkbox].is-info:checked+label:before {
+            background-color: #3B6978 !important;
+        }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-switch@2.0.0/dist/css/bulma-switch.min.css" />
     <link rel="icon" href="cluster.jpg" type="image/x-icon">
     <title>Agglomerative Clustering</title>
 </head>
@@ -48,17 +61,29 @@
             <h4 class="title">
                 Agglomerative Clustering
             </h4>
+            <div class="textareas">
+                <div class="field">
+                    <div class="control">
+                        <textarea class="textarea is-medium" placeholder="X1 points" rows="10" id="x1"></textarea>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <textarea class="textarea is-medium" placeholder="X2 points" rows="10" id="x2"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="switches">
+                <div class="field">
+                    <input id="linkageType" type="checkbox" name="linkageType" class="switch is-rounded is-info">
+                    <label for="linkageType">Complete Linkage</label>
+                </div>
+                <div class="field">
+                    <input id="distType" type="checkbox" name="distType" class="switch is-rounded is-info">
+                    <label for="distType">Manhattan Distance</label>
+                </div>
+            </div>
 
-            <div class="field">
-                <div class="control">
-                    <textarea class="textarea is-medium" placeholder="X1 points" rows="10" id="x1"></textarea>
-                </div>
-            </div>
-            <div class="field">
-                <div class="control">
-                    <textarea class="textarea is-medium" placeholder="X2 points" rows="10" id="x2"></textarea>
-                </div>
-            </div>
             <button class="button is-link" id="mainBtn">Submit</button>
         </div>
         <hr>

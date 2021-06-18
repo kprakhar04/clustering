@@ -2,6 +2,8 @@ const submitBtn = document.getElementById('mainBtn');
 const x1 = document.getElementById('x1');
 const x2 = document.getElementById('x2');
 const res = document.getElementById('res');
+const linkageType = document.getElementById('linkageType');
+const distType = document.getElementById('distType');
 
 
 submitBtn.addEventListener('click', (evt) => {
@@ -25,18 +27,20 @@ submitBtn.addEventListener('click', (evt) => {
     let distMat = constructMatrix(finalMat);
     showTableResult(distMat, colHeaders, rowHeaders);
 
+    const isCompLinkage = linkageType.checked;
+
     while (distMat.length > 2) {
         const { currRow, currCol, minEle } = findMinEle(distMat);
         createMinEle(minEle);
 
         // console.log(currRow, currCol, minEle);
         for (let k = 0; k < currCol; k++) {
-            distMat[currCol][k] = Math.min(distMat[currRow][k], distMat[currCol][k]);
+            distMat[currCol][k] = !isCompLinkage ? Math.min(distMat[currRow][k], distMat[currCol][k]) : Math.max(distMat[currRow][k], distMat[currCol][k]);
         }
         for (let i = currCol + 1; i < distMat.length; i++) {
             if (i !== currRow) {
                 // console.log(distMat[i][currCol], distMat[i][currRow]);
-                distMat[i][currCol] = Math.min(distMat[i][currCol], distMat[i][currRow]);
+                distMat[i][currCol] = !isCompLinkage ? Math.min(distMat[i][currCol], distMat[i][currRow]) : Math.max(distMat[i][currCol], distMat[i][currRow]);
             }
         }
         // if (rowHeaders[currCol].startsWith("(")) {
@@ -79,7 +83,8 @@ const constructMatrix = (vals) => {
     for (let i = 0; i < vals.length; i++) {
         const currPoint = vals[i];
         for (let j = 0; j < vals.length; j++) {
-            const dist = findDist(currPoint, vals[j]);
+            const isEuclidean = distType.checked ? false : true;
+            const dist = findDist(currPoint, vals[j], isEuclidean ? 2 : 1);
             arr[i][j] = dist;
         }
     }
@@ -110,8 +115,8 @@ const makeMatrixMirror = mat => {
     return mat;
 }
 
-const findDist = (p1, p2) => {
-    const d = +Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2)).toFixed(2);
+const findDist = (p1, p2, pow) => {
+    const d = +Math.pow(Math.pow(p1.x - p2.x, pow) + Math.pow(p1.y - p2.y, pow), 1 / pow).toFixed(2);
     return d;
 }
 
